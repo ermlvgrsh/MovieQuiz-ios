@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Yeq-8I-1fz">
-                                <rect key="frame" x="20" y="64" width="388" height="808"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yeq-8I-1fz">
+                                <rect key="frame" x="20" y="64" width="388" height="828"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6lB-ME-Z5E">
                                         <rect key="frame" x="0.0" y="0.0" width="388" height="23.333333333333332"/>
@@ -30,6 +30,7 @@
                                                         <attributes>
                                                             <color key="NSColor" name="white"/>
                                                             <font key="NSFont" size="20" name="YSDisplay-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
@@ -50,22 +51,22 @@
                                         </subviews>
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vyw-r2-8Tf" userLabel="Preview Image">
-                                        <rect key="frame" x="0.0" y="23.333333333333314" width="388" height="582"/>
+                                        <rect key="frame" x="0.0" y="43.333333333333314" width="388" height="582"/>
                                         <color key="backgroundColor" name="white"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Vyw-r2-8Tf" secondAttribute="height" multiplier="2:3" id="Clw-Y6-ICg"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPK-Ig-ss9">
-                                        <rect key="frame" x="0.0" y="605.33333333333337" width="388" height="142.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="645.33333333333337" width="388" height="102.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEe-wu-THd" userLabel="Question Label">
-                                                <rect key="frame" x="42" y="13.000000000000007" width="315" height="116.66666666666669"/>
+                                                <rect key="frame" x="42" y="13" width="304" height="76.666666666666671"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Рейтинг этого фильма выше 5?">
                                                         <attributes>
                                                             <color key="NSColor" name="white"/>
-                                                            <font key="NSFont" size="23" name="YSDisplay-Medium"/>
+                                                            <font key="NSFont" size="23" name="YSDisplay-Bold"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -75,14 +76,14 @@
                                         </subviews>
                                         <color key="backgroundColor" name="black"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="ZEe-wu-THd" secondAttribute="trailing" constant="42" id="ADS-bK-822"/>
                                             <constraint firstItem="ZEe-wu-THd" firstAttribute="top" secondItem="DPK-Ig-ss9" secondAttribute="top" constant="13" id="eKW-vd-im1"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZEe-wu-THd" secondAttribute="trailing" constant="20" symbolic="YES" id="eTu-OL-yWJ"/>
                                             <constraint firstAttribute="bottom" secondItem="ZEe-wu-THd" secondAttribute="bottom" constant="13" id="fs1-FA-JIF"/>
                                             <constraint firstItem="ZEe-wu-THd" firstAttribute="leading" secondItem="DPK-Ig-ss9" secondAttribute="leading" constant="42" id="jXx-Dt-Jm4"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="maa-p8-759">
-                                        <rect key="frame" x="0.0" y="748" width="388" height="60"/>
+                                        <rect key="frame" x="0.0" y="768" width="388" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BvO-lg-6gv" userLabel="Yes Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="184" height="60"/>
@@ -99,7 +100,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="YesButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DTg-6E-DxO"/>
+                                                    <action selector="yesButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C1K-4u-1hS"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lR5-eI-z5q" userLabel="No Button">
@@ -117,7 +118,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="NoButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lga-M4-0CX"/>
+                                                    <action selector="noButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vTt-q3-W0v"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -133,16 +134,16 @@
                         <constraints>
                             <constraint firstItem="Yeq-8I-1fz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="6d3-XU-ieV"/>
                             <constraint firstItem="Yeq-8I-1fz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="EZ1-F7-pM5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Yeq-8I-1fz" secondAttribute="bottom" constant="20" id="Er9-ua-seN"/>
+                            <constraint firstAttribute="bottom" secondItem="Yeq-8I-1fz" secondAttribute="bottom" constant="34" id="Er9-ua-seN"/>
                             <constraint firstItem="Yeq-8I-1fz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-20" id="d1N-RO-sbs"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="NoButton" destination="lR5-eI-z5q" id="Hgp-Nf-XWG"/>
-                        <outlet property="YesButton" destination="BvO-lg-6gv" id="93e-oc-apq"/>
                         <outlet property="counterLabel" destination="X5Q-B5-GCx" id="nJH-0W-RUk"/>
                         <outlet property="imageView" destination="Vyw-r2-8Tf" id="vQI-vc-eni"/>
+                        <outlet property="noButton" destination="lR5-eI-z5q" id="yRb-2C-gCJ"/>
                         <outlet property="textLabel" destination="ZEe-wu-THd" id="CdM-gt-69W"/>
+                        <outlet property="yesButton" destination="BvO-lg-6gv" id="i53-4b-LJd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
