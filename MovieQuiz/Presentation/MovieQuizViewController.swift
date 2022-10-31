@@ -83,7 +83,7 @@ final class MovieQuizViewController: UIViewController {
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 8
         imageView.layer.borderColor = isCorrect ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
-        imageView.layer.cornerRadius = 15
+        imageView.layer.cornerRadius = 20
         self.yesButton.isEnabled = false
         self.noButton.isEnabled = false
         
@@ -110,7 +110,7 @@ final class MovieQuizViewController: UIViewController {
     
     private func show(quiz step: QuizStepViewModel ) {
         // здесь мы заполняем нашу картинку, текст и счётчик данными
-        imageView.layer.cornerRadius = 15
+        imageView.layer.cornerRadius = 20
         imageView.image = step.image
         counterLabel.text = step.questionNumber
         textLabel.text = step.question
