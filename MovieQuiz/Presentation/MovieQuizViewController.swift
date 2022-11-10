@@ -16,7 +16,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate{
     private var questionFactory: QuestionFactoryProtocol?
     private var currentQuestion: QuizQuestion?
     private var currentQuestionIndex = 0
-    private var alertPresent : AlertPresenter?
+    private var alertPresent : AlertProtocol?
     
     
     //MARK: Private Functions
@@ -51,13 +51,24 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate{
     }
     
     private func showNextQuestionOrResults() {
-            if currentQuestionIndex == questionsAmount - 1 {
-                let text = correctAnswers == questionsAmount ?
-                "Поздравляю! Вы ответили на 10 вопросов из 10!"
-                : "Ваш результат \(correctAnswers) из 10, попробуйте еще раз"
-                
-                
-                
+        if currentQuestionIndex == questionsAmount - 1 {
+            let title = "Этот раунд завершен!"
+            let buttonText = "Сыграть еще раз"
+            let text = correctAnswers == questionsAmount ?
+            "Поздравляю! Вы ответили на 10 вопросов из 10!"
+            : "Ваш результат \(correctAnswers) из 10, попробуйте еще раз"
+            let alertModel = AlertModel(title: title,
+                                        message: text,
+                                        buttonText: buttonText,
+                                        completion: { [weak self] in
+                guard let self = self else { return }
+                self.correctAnswers = 0
+                self.currentQuestionIndex = 0
+                self.questionFactory?.requestNextQuestion()
+            }
+        )
+                alertPresent?.show(results: alertModel)
+               
             } else {
                 currentQuestionIndex += 1
                 questionFactory?.requestNextQuestion()
@@ -97,7 +108,6 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate{
         super.viewDidLoad()
         questionFactory = QuestionFactory(delegate: self)
         questionFactory?.requestNextQuestion()
-        
     }
     //MARK: QuestionFactoryDelegate
    
