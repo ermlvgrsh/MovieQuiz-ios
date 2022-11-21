@@ -2,15 +2,15 @@ import Foundation
 
 
 
-class QuestionFactory: QuestionFactoryProtocol {
+class QuestionFactory: QuestionFactoryProtocol { // создаем класс фабрики вопросов и через наследование наследуем протокол
    
-    weak var delegate: QuestionFactoryDelegate?
+    weak var delegate: QuestionFactoryDelegate? // создаем свойство, реализующее QuestionFactoryDelegate через инъекцию зависимостей через свойство
     init(delegate: QuestionFactoryDelegate) {
         self.delegate = delegate
 
     }
 
-    func requestNextQuestion() {
+    func requestNextQuestion() { // функция протокола QuestionFactoryProtocol, которая запрашивает случайный вопрос и вызываем метод нашего делегата
         guard let index = (0..<questions.count).randomElement() else {
             delegate?.didRecieveNextQuestion(question: nil)
         return
@@ -19,7 +19,7 @@ class QuestionFactory: QuestionFactoryProtocol {
         delegate?.didRecieveNextQuestion(question: question)
     }
    
-    
+        // через переменную создаем список вопросов квиза
     private let questions : [QuizQuestion] = [
         QuizQuestion(image: "The Godfather",
                      text: "Рейтинг этого фильма больше чем 6?",

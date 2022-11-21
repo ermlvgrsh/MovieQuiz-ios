@@ -1,30 +1,34 @@
 import Foundation
 import UIKit
-
+// создаем структуру, которая реализует протокол AlertProtocol
 struct AlertPresenter: AlertProtocol {
+
     
-    weak var viewController: UIViewController?
-    init(viewController: UIViewController? = nil) {
+    weak var viewController: UIViewController?              //создаем экземпляр вьюконтроллера
+    
+    init(viewController: UIViewController?) {               //инъектируем вьюконтроллер через свойство
         self.viewController = viewController
+        
     }
-    
+    //создаем метод для показа алертмодели в конце квиза
       func show(results: AlertModel) {
-        let alert = UIAlertController(title: results.title,
-                                      message: results.buttonText,
-                                      preferredStyle: .alert)
+          let alert = UIAlertController(title: results.title,
+                                        message: results.message,
+                                        preferredStyle: .alert)
         
         let action = UIAlertAction(title: results.buttonText,
                                    style: .default,
                                    handler: {_ in
             results.completion()
-                    }
+            
+        }
         )
           
           
-        alert.addAction(action)
+          alert.addAction(action) // добавляем 
         viewController?.present(alert, animated: true, completion: nil)
-    }
-  
+          
+      }
     
 }
     
