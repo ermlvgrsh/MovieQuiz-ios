@@ -8,6 +8,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     @IBOutlet private var counterLabel: UILabel!
     @IBOutlet private var yesButton: UIButton!
     @IBOutlet private var noButton: UIButton!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     
     
     //MARK: Private Variables
@@ -53,6 +54,30 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         textLabel.text = step.question
         
     }
+    // метод который вызывает индикатор загрузки
+    private func showLoadingIndicator() {
+        activityIndicator.isHidden = false // говорим что индикатор загрузки не скрыт
+        activityIndicator.startAnimating() // включаем анимацию
+    }
+    // метод который скрывает индикатор загрузки
+    private func hideLoadingIndicator() {
+        activityIndicator.isHidden = true
+    }
+ 
+    // метод, который показывает ошибку при загрузке данных
+    private func showNetworkError(message: String) {
+        hideLoadingIndicator()
+        let title = "Ошибка!"
+        let buttonText = "Попробовать еще раз"
+        let errorAlert = AlertModel(title: title,
+                                    buttonText: buttonText,
+                                    completion: { [weak self] in
+            guard let self = self else { return }
+            self.viewDidLoad()
+        }
+            )
+        alert?.show(results: errorAlert)
+    }
         //метод показывающий следующий вопрос или результат через алерт
     private func showNextQuestionOrResults() {
         if currentQuestionIndex == questionsAmount - 1 {
@@ -94,12 +119,20 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     }
     
     private func convert(model:QuizQuestion) -> QuizStepViewModel {
-        return QuizStepViewModel(image: UIImage(named: model.image) ?? UIImage(),
+        return QuizStepViewModel(image: UIImage(data: model.image) ?? UIImage(),
                                  question: model.text,
                                  questionNumber:"\(currentQuestionIndex + 1 )/\(questionsAmount)")
         
     }
-    
+    //  метод успешной загрузки с сервера
+    func didLoadDataFromServer() {
+        activityIndicator.isHidden = true
+        questionFactory?.requestNextQuestion()
+    }
+    //метод при ошибки загрузки с сервера
+    func didFailToLoadData(with error: Error) {
+        showNetworkError(message: error.localizedDescription)
+    }
     
     //MARK: IBActions
     @IBAction func noButtonClicked(_ sender: UIButton) {
@@ -122,8 +155,10 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        questionFactory = QuestionFactory(delegate: self)
-        questionFactory?.requestNextQuestion()
+        questionFactory = QuestionFactory(delegate: self, moviesLoader: MovieLoader())
+        showLoadingIndicator()
+        imageView.layer.cornerRadius = 20
+        questionFactory?.loadData()
         alert = AlertPresenter(viewController: self)
         statisticService = StatisticServiceImplementation()
     }

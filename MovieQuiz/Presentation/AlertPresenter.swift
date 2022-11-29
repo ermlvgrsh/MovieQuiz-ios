@@ -3,7 +3,6 @@ import UIKit
 // создаем структуру, которая реализует протокол AlertProtocol
 struct AlertPresenter: AlertProtocol {
 
-    
     weak var viewController: UIViewController?              //создаем экземпляр вьюконтроллера
     
     init(viewController: UIViewController?) {               //инъектируем вьюконтроллер через свойство
@@ -29,7 +28,12 @@ struct AlertPresenter: AlertProtocol {
         viewController?.present(alert, animated: true, completion: nil)
           
       }
-    
+
+
+//    func restart() {
+//        let questionProtocol : QuestionFactoryProtocol = viewController as! QuestionFactoryProtocol
+//        questionProtocol.requestNextQuestion()
+//    }
 }
     
     
