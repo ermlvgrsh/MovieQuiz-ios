@@ -7,8 +7,11 @@ protocol MovieLoading {
 // создаем структуру загрузчик, реализующую протокол загрузки файлов
 struct MovieLoader: MovieLoading {
     //MARK: создаем переменную отвечающую за создание запросов в API IMDb
-    private let networkClient = NetworkClient()
+    private let networkClient: NetworkRouting
     
+    init(networkClient: NetworkRouting = NetworkClient()) {
+        self.networkClient = networkClient
+    }
     //MARK: создаем переменную которая будет хранить в себе URL на который мы будем производить запрос
     private var mostPopularMoviesURL: URL {
         //Если мы не смогли преобразовать строку в URL, то приложение упадет с ошибкой
@@ -20,10 +23,7 @@ struct MovieLoader: MovieLoading {
 
     //создаем функции по загрузке фильмов из сети
     func loadMovies(handler: @escaping (Result<MostPopularMovies, Error>) -> Void) {
-        //        Используйте переменные networkClient и mostPopularMoviesUrl.
-        //        В замыкании обработайте ошибочное состояние и передайте его дальше в handler.
-        //        Преобразуйте данные в MostPopularMovies, используя JSONDecoder.
-        //        Верните их, используя handler.
+
         let decoder = JSONDecoder()
         //  берем переменную networkClient, вызываем у нее метод и передаем mostPopularMoviesURl
         //в handler передаем замыкание в котором обрабатываем возможные успешные и ошибочные состояния

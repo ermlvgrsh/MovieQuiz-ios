@@ -1,5 +1,6 @@
 import Foundation
-    // создаем протокол для связи MQC с классом SSI
+
+// создаем протокол для связи MQC с классом SSI
 protocol StatisticService {
     var totalAccuracy: Double { get }
     var gamesCount: Int { get }

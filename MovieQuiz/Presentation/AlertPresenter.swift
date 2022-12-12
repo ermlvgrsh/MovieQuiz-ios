@@ -23,7 +23,7 @@ struct AlertPresenter: AlertProtocol {
         }
         )
           
-          
+          alert.view.accessibilityIdentifier = "Alert Result"
           alert.addAction(action) // добавляем 
         viewController?.present(alert, animated: true, completion: nil)
           
