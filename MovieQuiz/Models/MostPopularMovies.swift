@@ -1,6 +1,6 @@
 import Foundation
-    // создаем структуру, которая дублирует компоновку JSON -  принимает два значения, errorMessage и items
-    // добавляем протокол Codable чтобы можно было преобразовать JSON в Swift-структуру
+// создаем структуру, которая дублирует компоновку JSON -  принимает два значения, errorMessage и items
+// добавляем протокол Codable чтобы можно было преобразовать JSON в Swift-структуру
 struct MostPopularMovies: Codable {
     let errorMessage: String
     let items: [MostPopularMovie]
@@ -16,7 +16,7 @@ struct MostPopularMovie: Codable {
         let urlString = imageURL.absoluteString
         //обрезаем лишнюю часть и добавляем модификатор желаемого качества
         let imageURLString = urlString.components(separatedBy: "._")[0] + "._V0_UX600_.jpg"
-            //создаем новую строку, если не получается - возвращаем старую
+        //создаем новую строку, если не получается - возвращаем старую
         guard let newURL = URL(string: imageURLString) else {
             return imageURL
             
@@ -27,9 +27,9 @@ struct MostPopularMovie: Codable {
     
     // берем поля из JSON и преобразуем в название нашей структуры
     private enum CodingKeys: String, CodingKey {
-    case title = "fullTitle"
-    case rating = "imDbRating"
-    case imageURL = "image"
+        case title = "fullTitle"
+        case rating = "imDbRating"
+        case imageURL = "image"
     }
 }
 

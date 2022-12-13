@@ -18,7 +18,7 @@ struct StubNetworkClient: NetworkRouting {
         
     }
     private var expectedResponse: Data {
-        """
+                """
                 {
                    "errorMessage" : "",
                    "items" : [
@@ -79,8 +79,8 @@ final class MoviesLoaderTest: XCTestCase {
                 XCTFail("Unexpected failure") // эта функция проваливает тест
             }
         }
-       
-       waitForExpectations(timeout: 1)
+        
+        waitForExpectations(timeout: 1)
     }
     func testFailureLoading() throws {
         //Given
@@ -91,7 +91,7 @@ final class MoviesLoaderTest: XCTestCase {
         let expectation = expectation(description: "Failure expectation")
         
         loader.loadMovies { result in
-        //Then
+            //Then
             switch result {
             case.success(_):
                 XCTFail("Unexpected success")

@@ -1,10 +1,3 @@
-//
-//  MovieQuizUITests.swift
-//  MovieQuizUITests
-//
-//  Created by Greg on 12.12.2022.
-//
-
 import XCTest
 
 final class MovieQuizUITests: XCTestCase {
@@ -59,7 +52,7 @@ final class MovieQuizUITests: XCTestCase {
         XCTAssertTrue(firstPoster != secondPoster)
         XCTAssertFalse(indexLabel.label != "1/10")
     }
-   
+    
     func testAlertAppears() {
         for _ in 1...10 {
             app.buttons["Yes"].tap()

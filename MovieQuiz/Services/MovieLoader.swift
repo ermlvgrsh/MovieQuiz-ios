@@ -20,10 +20,10 @@ struct MovieLoader: MovieLoading {
         }
         return url
     }
-
+    
     //создаем функции по загрузке фильмов из сети
     func loadMovies(handler: @escaping (Result<MostPopularMovies, Error>) -> Void) {
-
+        
         let decoder = JSONDecoder()
         //  берем переменную networkClient, вызываем у нее метод и передаем mostPopularMoviesURl
         //в handler передаем замыкание в котором обрабатываем возможные успешные и ошибочные состояния

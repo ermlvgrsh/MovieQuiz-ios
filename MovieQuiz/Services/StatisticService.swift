@@ -38,14 +38,14 @@ final class StatisticServiceImplementation: StatisticService {
     }
     private(set) var gamesCount: Int { // устанавливаем переменную, отвечающую за количество сыгранных игр
         get { // считываем в userDefaults значение общего количества сыгранных игр
-              let gamesCount = userDefaults.integer(forKey: Keys.gamesCount.rawValue)
-              return gamesCount // возвращаем считанное значение
-          }
+            let gamesCount = userDefaults.integer(forKey: Keys.gamesCount.rawValue)
+            return gamesCount // возвращаем считанное значение
+        }
         set { // сохраняем новое значение в userDefaults
             userDefaults.set(newValue, forKey: Keys.gamesCount.rawValue)
         }
         
-      }
+    }
     
     
     var totalAccuracy: Double { // устанавливаем переменную, вычисляющую среднюю точность правильных ответов
@@ -65,12 +65,12 @@ final class StatisticServiceImplementation: StatisticService {
         }
         set { // с помощью JSONEncoder преобразуем структуру GameRecord которая хранится в переменной newValue в тип Data переменной data
             guard let data = try? JSONEncoder().encode(newValue) else {
-            print("Невозможно сохранить результат!")
+                print("Невозможно сохранить результат!")
                 return
                 
-        } // сохраняем переменную data в userDefaults
+            } // сохраняем переменную data в userDefaults
             userDefaults.set(data, forKey: Keys.bestGame.rawValue)
-
+            
         }
         
     }
@@ -83,7 +83,7 @@ final class StatisticServiceImplementation: StatisticService {
         if bestGame.compare(count:counter) {                // если результат текущей игры больше лучшего результата, то лучшему результату присваивается текущая игра со всеми параметрами
             bestGame = counter
         }
-    
+        
     }
     
     
@@ -99,7 +99,7 @@ struct GameRecord: Codable {
         } else {
             return false
         }
-
+        
     }
     
 }
