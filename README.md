@@ -10,7 +10,7 @@ MovieQuiz -  Quiz app featuring questions about the top-250 highest-rated films 
 
 [Fonts](https://code.s3.yandex.net/Mobile/iOS/Fonts/MovieQuizFonts.zip)
 
-## **App description**
+## **Application description**
 
 - Single-page application with quizes about top-250 the most popular IMDb movies. The user of the application answers questions about the movie ratings sequantially. At the end of each round of the game, statistics are displayed on the number of correct answers and the user's best results. The goal of the game is to correctly answer all 10 questions in a round.
 
